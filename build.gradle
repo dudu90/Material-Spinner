@@ -1,18 +1,45 @@
 buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0'
-  }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.0.1"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+    }
 }
 
 allprojects {
-  repositories {
-    jcenter()
-  }
+    repositories {
+        jcenter()
+    }
 }
 
 task clean(type: Delete) {
-  delete rootProject.buildDir
+    delete rootProject.buildDir
+}
+ext {
+    userName = 'jaredrummler'
+    developer = [
+            id  : 'jaredrummler',
+            name: 'jaredrummler',
+    ]
+    license = [
+            id  : 'Apache',
+            name: 'The Apache License',
+            url : 'http://www.apache.org/licenses/LICENSE-2.0'
+    ]
+    groupName = 'com.heylotus.material-spinner'
+    artifactName = 'material-spinner'
+    artifactDescription = 'material-spinner'
+    artifactLabels = ['material-spinner']
+    releaseVersionCode = 2
+    releaseVersionName = '1.1.0'
+
+    androidBuildToolsVersion = '25.0.0'
+    androidCompileSdkVersion = 24 // 25 源码还没出，设置为 25 会导致 IDE 看不到源码
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 22
+    androidSupportSdkVersion = '25.0.0'
 }
